@@ -44,6 +44,11 @@ on:
         description: 'Clean build (no ccache)'
         type: boolean
         default: false
+      debug:
+        description: 'Enable dumping debug related artifacts'
+        required: false
+        type: boolean
+        default: false
       android12-5_10_susfs_branch_or_commit:
         description: 'Enter SusFS Branch or commit hash for android12-5.10'
         type: string
@@ -580,6 +585,7 @@ jobs:
           susfs_commit_hash_or_branch: ${{ matrix.susfs_resolved_hash }}
           optimize_level: ${{ inputs.optimize_level }}
           clean: ${{ inputs.clean_build }}
+          debug: ${{ inputs.debug }}
 
       - name: 📊 Build statistics
         id: build-stat
